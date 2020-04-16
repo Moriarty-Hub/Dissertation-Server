@@ -5,9 +5,10 @@
     <title>Add New User</title>
 </head>
 <body>
-    <form action="" method="post">
-        <p>Username: <input type="text" name="username"></p>
-        <p>Date of birth: <input type="date"></p>
+    <form action="/add-new-user" method="post">
+        <p>Username: <label><input type="text" name="username"></label></p>
+        <p>E-mail address: <label><input type="email" name="email"></label></p>
+        <p>Date of birth: <label><input type="date" name="dateOfBirth"></label></p>
         <p><input type="submit" value="Submit"> &nbsp;&nbsp; <input type="reset" value="Reset"></p>
     </form>
 </body>

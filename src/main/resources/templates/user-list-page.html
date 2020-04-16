@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User List Page</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Index</th>
+            <th>Username</th>
+            <th>Is active</th>
+            <th>Role</th>
+            <th>Date of birth</th>
+            <th>E-mail</th>
+        </tr>
+        <tr th:each="user, i : ${userList}">
+            <td th:text="${i.count}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.isActive()}"></td>
+            <td th:text="${user.getRole().toString()}"></td>
+            <td th:text="${user.getDateOfBirth()}"></td>
+            <td th:text="${user.getEMail()}"></td>
+        </tr>
+    </table>
+</body>
+</html>

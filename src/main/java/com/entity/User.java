@@ -8,16 +8,12 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-enum Role {
-    NORMAL_USER, ADMINISTRATOR
-}
-
 public class User implements UserDetails {
 
     private String id;
     private String username;
     private String password;
-    private boolean isOriginalPassword;
+    private boolean isActive;
     private Role role;
     private String dateOfBirth;
     private String eMail;
@@ -30,7 +26,7 @@ public class User implements UserDetails {
         this.username = username;
         this.password = password;
         this.role = role;
-        this.isOriginalPassword = false;
+        this.isActive = false;
         this.dateOfBirth = dateOfBirth;
         this.eMail = eMail;
     }
@@ -78,6 +74,9 @@ public class User implements UserDetails {
         if (role.equals(Role.ADMINISTRATOR)) {
             simpleGrantedAuthorities.add(new SimpleGrantedAuthority(Role.ADMINISTRATOR.toString()));
         }
+        if (!isActive()) {
+            simpleGrantedAuthorities.add(new SimpleGrantedAuthority("INACTIVE"));
+        }
         return simpleGrantedAuthorities;
     }
 
@@ -97,12 +96,12 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public boolean isOriginalPassword() {
-        return isOriginalPassword;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setOriginalPassword(boolean originalPassword) {
-        isOriginalPassword = originalPassword;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getDateOfBirth() {
