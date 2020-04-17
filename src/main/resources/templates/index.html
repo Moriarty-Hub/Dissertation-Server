@@ -7,8 +7,39 @@
 <body>
     <div th:if="${hasInfo}"><p th:text="${info}"></p></div>
     <a href="/modify-password">Modify Password</a>
+    <br>
     <div th:if="${isAdministrator}">
         <a href="/add-new-user">Add new user</a>
     </div>
+    <br>
+    <table border="2" cellspacing="0">
+        <tr><th colspan="3">Target List</th></tr>
+        <tr>
+            <th>Index</th>
+            <th>Target</th>
+            <th>Target type</th>
+        </tr>
+        <tr th:each="target, i : ${targetList}">
+            <td th:text="${i.count}" align="center"></td>
+            <td th:text="${target.getTarget()}"></td>
+            <td th:text="${target.getTargetType().toString()}" align="center"></td>
+        </tr>
+    </table>
+    <br>
+    <table border="2" cellspacing="0">
+        <tr><th colspan="4">Scan Result Summary</th></tr>
+        <tr>
+            <th>Index</th>
+            <th>Target</th>
+            <th>Target type</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="scanResult, i : ${scanResultList}">
+            <td th:text="${i.count}" align="center"></td>
+            <td th:text="${scanResult.getTarget()}"></td>
+            <td th:text="${scanResult.getTargetType().toString()}" align="center"></td>
+            <td th:text="${scanResult.getDescription()}"></td>
+        </tr>
+    </table>
 </body>
 </html>

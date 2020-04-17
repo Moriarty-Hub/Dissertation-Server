@@ -19,7 +19,7 @@ public interface UserMapper {
     @Insert("INSERT INTO user(id, username, password, is_active, role, date_of_birth, e_mail) VALUES (#{id}, #{username}, #{password}, #{isActive}, #{role}, #{dateOfBirth}, #{email})")
     void insertUser(String id, String username, String password, String isActive, String role, String dateOfBirth, String email);
 
-    @Select("SELECT id, username, password, is_active as isActive, role, date_of_birth as dateOfBirth, e_mail as eMail FROM user")
+    @Select("SELECT id, username, password, is_active as isActive, role, date_of_birth as dateOfBirth, e_mail as eMail FROM user ORDER BY role")
     List<User> selectAllUsers();
     
     @Update("UPDATE user SET password = #{password} WHERE id = #{id}")
