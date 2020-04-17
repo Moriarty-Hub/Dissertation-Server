@@ -13,16 +13,23 @@
     </div>
     <br>
     <table border="2" cellspacing="0">
-        <tr><th colspan="3">Target List</th></tr>
+        <tr><th colspan="4">Target List</th></tr>
         <tr>
             <th>Index</th>
             <th>Target</th>
             <th>Target type</th>
+            <th>Action</th>
         </tr>
         <tr th:each="target, i : ${targetList}">
             <td th:text="${i.count}" align="center"></td>
             <td th:text="${target.getTarget()}"></td>
             <td th:text="${target.getTargetType().toString()}" align="center"></td>
+            <td>
+                <form action="/delete-target" method="post">
+                    <input name="index" th:value="${i.count}" hidden>
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
         </tr>
     </table>
     <br>
