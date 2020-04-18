@@ -47,4 +47,10 @@ public class IndexController {
         targetService.deleteTarget(index);
         return "redirect:index";
     }
+
+    @PostMapping("/insert-target")
+    public String insertTarget(@RequestParam String target, @RequestParam String targetType) {
+        targetService.insertTarget(target, targetType);
+        return "redirect:index";
+    }
 }

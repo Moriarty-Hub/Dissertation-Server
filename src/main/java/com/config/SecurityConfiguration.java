@@ -30,6 +30,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/logout").permitAll()
                 .antMatchers("/index").hasAuthority(Role.NORMAL_USER.toString())
                 .antMatchers("/modify-password").hasAuthority(Role.NORMAL_USER.toString())
+                .antMatchers("/insert-target").hasAuthority(Role.ADMINISTRATOR.toString())
+                .antMatchers("/delete-target").hasAuthority(Role.ADMINISTRATOR.toString())
                 .antMatchers("/add-new-user").hasAuthority(Role.ADMINISTRATOR.toString())
                 .antMatchers("/user-list-page").hasAuthority(Role.ADMINISTRATOR.toString())
                 .antMatchers("/set-password").hasAuthority("INACTIVE")

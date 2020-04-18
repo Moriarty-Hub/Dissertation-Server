@@ -35,6 +35,14 @@
                 </td>
             </div>
         </tr>
+        <div th:if="${isAdministrator}">
+            <td></td>
+            <form action="/insert-target" method="post">
+                <td><input type="text" name="target"></td>
+                <td><input type="radio" name="targetType" value="HOST">HOST &nbsp; <input type="radio" name="targetType" value="URL">URL &nbsp;</td>
+                <td><input type="submit" value="Insert"></td>
+            </form>
+        </div>
     </table>
     <br>
     <table border="2" cellspacing="0">

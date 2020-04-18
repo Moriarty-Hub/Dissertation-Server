@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public interface TargetMapper {
 
-    @Insert("INSERT INTO target(id, target, target_type) VALUES(#{id}, #{target}, #{targetType}")
+    @Insert("INSERT INTO target(id, target, target_type) VALUES(#{id}, #{target}, #{targetType})")
     void insertTarget(String id, String target, String targetType);
 
     @Select("SELECT id, target, target_type as targetType FROM target ORDER BY target_type")
