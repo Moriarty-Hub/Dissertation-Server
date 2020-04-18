@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.entity.Target;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -17,4 +18,7 @@ public interface TargetMapper {
 
     @Select("SELECT id, target, target_type as targetType FROM target ORDER BY target_type")
     List<Target> selectAllTargets();
+
+    @Delete("DELETE FROM target WHERE id = #{id}")
+    void deleteTargetById(String id);
 }

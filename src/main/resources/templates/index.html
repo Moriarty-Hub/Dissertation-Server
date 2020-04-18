@@ -13,23 +13,26 @@
     </div>
     <br>
     <table border="2" cellspacing="0">
-        <tr><th colspan="4">Target List</th></tr>
+        <div th:if="${isAdministrator}"><th colspan="4">Target List</th></div>
+        <div th:unless="${isAdministrator}"><th colspan="3">Target List</th></div>
         <tr>
             <th>Index</th>
             <th>Target</th>
             <th>Target type</th>
-            <th>Action</th>
+            <div><th th:if="${isAdministrator}">Action</th></div>
         </tr>
         <tr th:each="target, i : ${targetList}">
             <td th:text="${i.count}" align="center"></td>
             <td th:text="${target.getTarget()}"></td>
             <td th:text="${target.getTargetType().toString()}" align="center"></td>
-            <td>
-                <form action="/delete-target" method="post">
-                    <input name="index" th:value="${i.count}" hidden>
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
+            <div th:if="${isAdministrator}">
+                <td>
+                    <form action="/delete-target" method="post">
+                        <input name="index" th:value="${i.count}" hidden>
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </div>
         </tr>
     </table>
     <br>
