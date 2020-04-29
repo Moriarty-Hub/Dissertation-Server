@@ -21,13 +21,14 @@ public class ManageUserService {
         this.userMapper = userMapper;
     }
 
-    public void insertNewUserAndSendAccountInfo(String username, String email, String dateOfBirth) {
+    public void insertNewUserAndSendAccountInfo(String username, String email, String dateOfBirth, String department, String jobTitle) {
         String id = UUID.randomUUID().toString();
         Random random = new Random();
         String password = String.format("%06d", random.nextInt(1000000));
         String encodedPassword = new BCryptPasswordEncoder().encode(password);
         String isActive = String.valueOf(0);
-        userMapper.insertUser(id, username, encodedPassword, isActive, Role.NORMAL_USER.toString(), dateOfBirth, email);
+        String avatar = "default.jpg";
+        userMapper.insertUser(id, username, encodedPassword, isActive, Role.NORMAL_USER.toString(), dateOfBirth, email, avatar, department, jobTitle);
         String subject = "Your account for dissertation server";
         String content = "Username: " + username + "\nPassword: " + password;
         mailService.sendMail(email, subject, content);

@@ -6,44 +6,15 @@
 </head>
 <body>
     <div th:if="${hasInfo}"><p th:text="${info}"></p></div>
-    <a href="/modify-password">Modify Password</a>
+    <a href="/profile">Profile</a>
     <a href="/logout">Log out</a>
     <br>
     <div th:if="${isAdministrator}">
-        <a href="/add-new-user">Add new user</a>
+        <a href="/manage-user">Manage User</a>
+        <a href="/manage-target">Manage Target</a>
     </div>
     <br>
-    <table border="2" cellspacing="0">
-        <div th:if="${isAdministrator}"><th colspan="4">Target List</th></div>
-        <div th:unless="${isAdministrator}"><th colspan="3">Target List</th></div>
-        <tr>
-            <th>Index</th>
-            <th>Target</th>
-            <th>Target type</th>
-            <div><th th:if="${isAdministrator}">Action</th></div>
-        </tr>
-        <tr th:each="target, i : ${targetList}">
-            <td th:text="${i.count}" align="center"></td>
-            <td th:text="${target.getTarget()}"></td>
-            <td th:text="${target.getTargetType().toString()}" align="center"></td>
-            <div th:if="${isAdministrator}">
-                <td>
-                    <form action="/delete-target" method="post">
-                        <input name="index" th:value="${i.count}" hidden>
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
-            </div>
-        </tr>
-        <div th:if="${isAdministrator}">
-            <td></td>
-            <form action="/insert-target" method="post">
-                <td><input type="text" name="target"></td>
-                <td><input type="radio" name="targetType" value="HOST">HOST &nbsp; <input type="radio" name="targetType" value="URL">URL &nbsp;</td>
-                <td><input type="submit" value="Insert"></td>
-            </form>
-        </div>
-    </table>
+
     <br>
     <table border="2" cellspacing="0">
         <tr><th colspan="4">Scan Result Summary</th></tr>

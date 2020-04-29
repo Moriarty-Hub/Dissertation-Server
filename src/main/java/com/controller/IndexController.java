@@ -7,9 +7,14 @@ import com.service.TargetService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @Controller
 public class IndexController {
@@ -24,6 +29,14 @@ public class IndexController {
 
     @GetMapping("/index")
     public String showIndexPage(Model model) {
+        // For test only
+        try {
+            String uploadDir= ResourceUtils.getURL("classpath:").getPath();
+            System.out.println(uploadDir);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        // For test only
         String authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
         if (authorities.contains(Role.ADMINISTRATOR.toString())) {
             model.addAttribute("isAdministrator", true);

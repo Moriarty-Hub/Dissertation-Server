@@ -17,18 +17,24 @@ public class User implements UserDetails {
     private Role role;
     private String dateOfBirth;
     private String eMail;
+    private String avatar;
+    private String department;
+    private String jobTitle;
 
     public User() {
 
     }
 
-    public User(String username, String password, Role role, String dateOfBirth, String eMail) {
+    public User(String username, String password, Role role, String dateOfBirth, String eMail, String avatar, String department, String jobTitle) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.isActive = false;
         this.dateOfBirth = dateOfBirth;
         this.eMail = eMail;
+        this.avatar = avatar;
+        this.department = department;
+        this.jobTitle = jobTitle;
     }
 
     public String getId() {
@@ -120,5 +126,27 @@ public class User implements UserDetails {
         this.eMail = eMail;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
 
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
 }

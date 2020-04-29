@@ -16,24 +16,18 @@ public class ManageUserController {
         this.manageUserService = manageUserService;
     }
 
-    @GetMapping("/add-new-user")
-    public String showAddNewUserPage() {
-        return "add-new-user";
+    @GetMapping("/manage-user")
+    public String showUserListPage(Model model) {
+        model.addAttribute("userList", manageUserService.selectAllUsers());
+        return "manage-user";
     }
 
     @PostMapping("/add-new-user")
-    public String addNewUser(@RequestParam String username, @RequestParam String email, @RequestParam String dateOfBirth, Model model) {
-        manageUserService.insertNewUserAndSendAccountInfo(username, email, dateOfBirth);
+    public String addNewUser(@RequestParam String username, @RequestParam String email, @RequestParam String dateOfBirth, @RequestParam String department, @RequestParam String jobTitle, Model model) {
+        manageUserService.insertNewUserAndSendAccountInfo(username, email, dateOfBirth, department, jobTitle);
         model.addAttribute("hasInfo", true);
         model.addAttribute("info", "The new user was added successfully.");
         return "redirect:index";
     }
-
-    @GetMapping("/user-list-page")
-    public String showUserListPage(Model model) {
-        model.addAttribute("userList", manageUserService.selectAllUsers());
-        return "user-list-page";
-    }
-
-
+    
 }
