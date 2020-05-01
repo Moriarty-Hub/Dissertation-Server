@@ -41,9 +41,23 @@ public class ManageTargetController {
 
     @PostMapping("/update-target")
     public String updateTarget(@RequestParam String id, @RequestParam String target, @RequestParam String targetType,
-                               @RequestParam String department, @RequestParam String owner) {
-        targetService.updateTarget(id, target, targetType, department, owner);
-
+                               @RequestParam String department, @RequestParam String owner, Model model) {
+        boolean isOwnerExist = targetService.updateTarget(id, target, targetType, department, owner);
+        model.addAttribute("isOwnerExist", isOwnerExist);
         return "redirect:/edit-target" + "?id=" + id;
+    }
+
+    @GetMapping("/add-new-target")
+    public String showAddNewTargetPage(Model model) {
+        model.addAttribute("departmentList", departmentMapper.selectAllDepartmentName());
+        model.addAttribute("jobTitleList", jobTitleMapper.selectAllJobTitle());
+        return "/add-new-target";
+    }
+
+    @PostMapping("/add-new-target")
+    public String addNewTarget(@RequestParam String target, @RequestParam String targetType,
+                               @RequestParam String department, @RequestParam String owner) {
+
+        return "redirect:/manage-target";
     }
 }

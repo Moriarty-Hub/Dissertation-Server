@@ -2,20 +2,21 @@ package com.service;
 
 import com.entity.Target;
 import com.mapper.TargetMapper;
+import com.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class TargetService {
 
+    private final UserMapper userMapper;
     private final TargetMapper targetMapper;
     private List<String> indexList;
 
-    public TargetService(TargetMapper targetMapper) {
+    public TargetService(UserMapper userMapper, TargetMapper targetMapper) {
+        this.userMapper = userMapper;
         this.targetMapper = targetMapper;
         indexList = new ArrayList<>();
         updateIndexList();
@@ -52,7 +53,20 @@ public class TargetService {
         return targetMapper.selectTargetById(id);
     }
 
-    public void updateTarget(String id, String target, String targetType, String department, String owner) {
+    public boolean updateTarget(String id, String target, String targetType, String department, String owner) {
+        if (userMapper.selectUserByUsername(owner) == null) {
+            return false;
+        }
         targetMapper.updateTarget(id, target, targetType, department, owner);
+        return true;
+    }
+
+    public boolean insertNewTarget(String target, String targetType, String department, String owner) {
+        String id = UUID.randomUUID().toString();
+        if (userMapper.selectUserByUsername(owner) == null) {
+            return false;
+        }
+        targetMapper.insertTarget(id, target, targetType, department, owner);
+        return true;
     }
 }

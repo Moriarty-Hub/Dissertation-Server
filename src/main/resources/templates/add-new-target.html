@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Target</title>
+</head>
+<body>
+    <form action="/add-new-target" method="post">
+        <p>Target: <input type="text" name="target"></p>
+        <p>Target type: <select name="targetType">
+                            <option value="HOST">HOST</option>
+                            <option value="URL">URL</option>
+                        </select>
+        </p>
+        <p>Department: <select name="department">
+                            <option th:each="department : ${departmentList}" th:text="${department}" th:value="${department}"></option>
+                       </select>
+        </p>
+        <p>Owner: <input type="text" name="owner"></p>
+        <input type="submit" value="Submit"> &nbsp;&nbsp; <input type="reset" value="Reset">
+    </form>
+</body>
+</html>

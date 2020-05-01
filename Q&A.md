@@ -1,0 +1,3 @@
+1. 在Controller.ManageTargetController.java这个文件中的updateTarget()这个方法里（第42-48行），我在返回页面的时候直接把Get请求的参数直接加到了URL里面，运行过程中没有发现什么问题，但是IDEA报错，那么正确的做法应该是怎样的呢？
+2. 还是在同一方法里的第47行的位置，我给model添加了isOwnerExist这一参数，但估计是因为页面重定向的缘故，这一attribute并没有被传递过去，应该怎么纠正呢？
+3. 我给这个系统设置了用户头像上传以及显示的功能，在开发过程中，我发现对于前端页面而言，它们的根目录是src/main/java/resources/static这个目录，这似乎就意味着我只能把要用于前端页面显示的图片存到这个目录以下的位置，而不能是磁盘的其他位置，是不是我采用的方法有问题呢？因为按理来说应该是磁盘上任一路径的图片都可以被读取到的，而不应该是被限制在这一文件夹下面（在profile.html这个文件中，当@{${avatar}}的值为/avatar/default.jpg的时候，读取的是src/main/java/resources/static/avatar/default.jpg这个文件，我由此推断出了它的根目录）

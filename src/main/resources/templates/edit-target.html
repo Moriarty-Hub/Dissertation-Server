@@ -5,6 +5,7 @@
     <title>Edit Target</title>
 </head>
 <body>
+    <div th:if="${isOwnerExist}"></div>
     <form action="/update-target" method="post">
         <p th:text="'ID: ' + ${target.getId()}"></p>
         <input name="id" th:value="${target.getId()}" hidden>
