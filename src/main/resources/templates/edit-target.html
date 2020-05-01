@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Target</title>
+</head>
+<body>
+    <form action="/update-target" method="post">
+        <p th:text="'ID: ' + ${target.getId()}"></p>
+        <input name="id" th:value="${target.getId()}" hidden>
+        <p>Target: <input name="target" th:value="${target.getTarget()}"></p>
+        <p>Target Type: <select name="targetType">
+                            <option th:selected="${target.getTargetType()} == HOST" value="HOST">HOST</option>
+                            <option th:selected="${target.getTargetType()} == URL" value="URL">URL</option>
+                        </select>
+        <p>Department: <select name="department">
+                            <option th:each="department : ${departmentList}" th:text="${department}" th:value="${department}" th:selected="${target.getDepartment()} == ${department}"></option>
+                        </select></p>
+        <p>Owner: <input type="text" name="owner" th:value="${target.getOwner()}"></p>
+        <input type="submit" value="Submit"> &nbsp;&nbsp; <input type="reset" value="Reset">
+    </form>
+    <p><a href="/manage-target">Back</a></p>
+</body>
+</html>

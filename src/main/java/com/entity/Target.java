@@ -4,6 +4,8 @@ public class Target {
     private String id;
     private String target;
     private TargetType targetType;
+    private String department;
+    private String owner;
 
     public String getId() {
         return id;
@@ -27,5 +29,21 @@ public class Target {
 
     public void setTargetType(TargetType targetType) {
         this.targetType = targetType;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

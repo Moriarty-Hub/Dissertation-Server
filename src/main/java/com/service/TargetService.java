@@ -34,9 +34,25 @@ public class TargetService {
         targetMapper.deleteTargetById(indexList.remove(Integer.parseInt(index) - 1));
     }
 
-    public void insertTarget(String target, String targetType) {
+    public void insertTarget(String target, String targetType, String department, String owner) {
         String id = UUID.randomUUID().toString();
-        targetMapper.insertTarget(id, target, targetType);
+        targetMapper.insertTarget(id, target, targetType, department, owner);
         updateIndexList();
+    }
+
+    public List<Target> getHostTargetList() {
+        return targetMapper.selectAllHostTarget();
+    }
+
+    public List<Target> getUrlTargetList() {
+        return targetMapper.selectAllUrlTarget();
+    }
+
+    public Target getTargetById(String id) {
+        return targetMapper.selectTargetById(id);
+    }
+
+    public void updateTarget(String id, String target, String targetType, String department, String owner) {
+        targetMapper.updateTarget(id, target, targetType, department, owner);
     }
 }

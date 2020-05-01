@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Target Management</title>
 </head>
 <body>
-
+    <table border="2" cellspacing="0">
+        <tr><th colspan="7">Hardware Asset</th></tr>
+        <tr>
+            <th>Index</th>
+            <th>Target</th>
+            <th>Target type</th>
+            <th>Department</th>
+            <th>Owner</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr th:each="target, i : ${hostTargetList}">
+            <td th:text="${i.count}" align="center"></td>
+            <td th:text="${target.getTarget()}"></td>
+            <td th:text="${target.getTargetType().toString()}" align="center"></td>
+            <td th:text="${target.getDepartment()}"></td>
+            <td th:text="${target.getOwner()}"></td>
+            <td><a th:href="'/edit-target?id='+${target.getId()}">Edit</a></td>
+            <td><a th:href="'/delete-target?id='+${target.getId()}">Delete</a></td>
+        </tr>
+    </table>
+    <br><br>
+    <table border="2" cellspacing="0">
+        <tr><th colspan="7">Website Asset</th></tr>
+        <tr>
+            <th>Index</th>
+            <th>Target</th>
+            <th>Target type</th>
+            <th>Department</th>
+            <th>Owner</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr th:each="target, i : ${urlTargetList}">
+            <td th:text="${i.count}" align="center"></td>
+            <td th:text="${target.getTarget()}"></td>
+            <td th:text="${target.getTargetType().toString()}" align="center"></td>
+            <td th:text="${target.getDepartment()}"></td>
+            <td th:text="${target.getOwner()}"></td>
+            <td><a th:href="'/edit-target?id='+${target.getId()}">Edit</a></td>
+            <td><a th:href="'/delete-target?id='+${target.getId()}">Delete</a></td>
+        </tr>
+    </table>
 </body>
 </html>
