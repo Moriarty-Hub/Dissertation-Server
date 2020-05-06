@@ -1,10 +1,7 @@
 package com.mapper;
 
 import com.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,4 +30,7 @@ public interface UserMapper {
 
     @Update("UPDATE user SET avatar = #{avatar} WHERE id = #{id}")
     void updateAvatar(String id, String avatar);
+
+    @Delete("DELETE FROM user WHERE id = #{id}")
+    void deleteUserById(String id);
 }
