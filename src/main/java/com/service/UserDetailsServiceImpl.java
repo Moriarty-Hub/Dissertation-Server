@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.User;
 import com.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +18,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userMapper.selectUserByUsername(username);
+        User user = userMapper.selectUserByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Username was not found.");
+        }
+        return user;
     }
 }

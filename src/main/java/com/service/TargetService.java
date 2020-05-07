@@ -35,12 +35,6 @@ public class TargetService {
         targetMapper.deleteTargetById(indexList.remove(Integer.parseInt(index) - 1));
     }
 
-    public void insertTarget(String target, String targetType, String department, String owner) {
-        String id = UUID.randomUUID().toString();
-        targetMapper.insertTarget(id, target, targetType, department, owner);
-        updateIndexList();
-    }
-
     public List<Target> getHostTargetList() {
         return targetMapper.selectAllHostTarget();
     }

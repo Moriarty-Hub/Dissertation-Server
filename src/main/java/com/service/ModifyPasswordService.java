@@ -25,7 +25,7 @@ public class ModifyPasswordService {
         } else {
             userMapper.updatePassword(id, new BCryptPasswordEncoder().encode(password));
             userMapper.activeUser(id);
-            returnValue.put(true, null);
+            returnValue.put(true, Optional.empty());
         }
         return returnValue;
     }
