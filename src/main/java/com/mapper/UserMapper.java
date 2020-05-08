@@ -33,4 +33,10 @@ public interface UserMapper {
 
     @Delete("DELETE FROM user WHERE id = #{id}")
     void deleteUserById(String id);
+
+    @Select("SELECT id, username, password, is_active as isActive, role, date_of_birth as dateOfBirth, e_mail as eMail, avatar, department, job_title as jobTitle FROM user WHERE id = #{id}")
+    User selectUserById(String id);
+
+    @Update("UPDATE user SET username = #{username}, date_of_birth = #{dateOfBirth}, e_mail = #{eMail}, department = #{department}, job_title = #{jobTitle} WHERE id = #{id}")
+    void updateProfile(String id, String username, String dateOfBirth, String eMail, String department, String jobTitle);
 }

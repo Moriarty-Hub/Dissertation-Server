@@ -5,7 +5,8 @@
     <title>User List Page</title>
 </head>
 <body>
-    <table>
+    <table border="2" cellspacing="0">
+        <tr><th colspan="8">User List</th></tr>
         <tr>
             <th>Index</th>
             <th>Username</th>
@@ -13,6 +14,7 @@
             <th>Role</th>
             <th>Date of birth</th>
             <th>E-mail</th>
+            <th colspan="2">Action</th>
         </tr>
         <tr th:each="user, i : ${userList}">
             <td th:text="${i.count}"></td>
@@ -21,6 +23,8 @@
             <td th:text="${user.getRole().toString()}"></td>
             <td th:text="${user.getDateOfBirth()}"></td>
             <td th:text="${user.getEMail()}"></td>
+            <td><a th:href="'/edit-user?id='+${user.getId()}">Edit</a></td>
+            <td><a th:href="'/delete-user?id='+${user.getId()}">Delete</a></td>
         </tr>
     </table>
 </body>
