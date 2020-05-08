@@ -3,10 +3,8 @@ package com.service;
 import com.entity.Role;
 import com.entity.User;
 import com.mapper.UserMapper;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Random;
@@ -44,11 +42,6 @@ public class ManageUserService {
         return userMapper.selectUserById(id);
     }
 
-    public boolean isUsernameHasChangedAndNotExist(String id, String username) {
-        User user = userMapper.selectUserById(id);
-        return !user.getUsername().equals(username) && userMapper.selectUserByUsername(username) == null;
-    }
-
     public boolean isUsernameHasChanged(String id, String username) {
         return !userMapper.selectUserById(id).getUsername().equals(username);
     }
@@ -59,5 +52,9 @@ public class ManageUserService {
 
     public void updateUserProfile(String id, String username, String dateOfBirth, String eMail, String department, String jobTitle) {
         userMapper.updateProfile(id, username, dateOfBirth, eMail, department, jobTitle);
+    }
+
+    public void deleteUser(String id) {
+        userMapper.deleteUserById(id);
     }
 }

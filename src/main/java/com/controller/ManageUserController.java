@@ -71,4 +71,10 @@ public class ManageUserController {
         }
         return "redirect:edit-user?id=" + id;
     }
+
+    @GetMapping("/delete-user")
+    public String deleteUser(@RequestParam String id) {
+        manageUserService.deleteUser(id);
+        return "redirect:/manage-user";
+    }
 }
