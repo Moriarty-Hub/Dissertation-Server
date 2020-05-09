@@ -13,26 +13,18 @@ public class TargetService {
 
     private final UserMapper userMapper;
     private final TargetMapper targetMapper;
-    private List<String> indexList;
 
     public TargetService(UserMapper userMapper, TargetMapper targetMapper) {
         this.userMapper = userMapper;
         this.targetMapper = targetMapper;
-        indexList = new ArrayList<>();
-        updateIndexList();
-    }
-
-    public void updateIndexList() {
-        indexList.clear();
-        indexList = targetMapper.selectAllTargets().stream().map(Target::getId).collect(Collectors.toList());
     }
 
     public List<Target> getTargetList() {
         return targetMapper.selectAllTargets();
     }
 
-    public void deleteTarget(String index) {
-        targetMapper.deleteTargetById(indexList.remove(Integer.parseInt(index) - 1));
+    public void deleteTarget(String id) {
+        targetMapper.deleteTargetById(id);
     }
 
     public List<Target> getHostTargetList() {

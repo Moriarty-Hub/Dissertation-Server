@@ -5,6 +5,7 @@
     <title>Add New Target</title>
 </head>
 <body>
+    <p th:if="${isError}">The owner is not exist</p>
     <form action="/add-new-target" method="post">
         <p>Target: <input type="text" name="target"></p>
         <p>Target type: <select name="targetType">

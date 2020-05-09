@@ -56,8 +56,18 @@ public class ManageTargetController {
 
     @PostMapping("/add-new-target")
     public String addNewTarget(@RequestParam String target, @RequestParam String targetType,
-                               @RequestParam String department, @RequestParam String owner) {
+                               @RequestParam String department, @RequestParam String owner, Model model) {
+        boolean result = targetService.insertNewTarget(target, targetType, department, owner);
+        if (!result) {
+            model.addAttribute("isError", true);
+            return "/add-new-target";
+        }
+        return "redirect:/manage-target";
+    }
 
+    @GetMapping("/delete-target")
+    public String deleteTarget(@RequestParam String id) {
+        targetService.deleteTarget(id);
         return "redirect:/manage-target";
     }
 }
