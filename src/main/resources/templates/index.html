@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+body{
+    background-repeat:no-repeat;
+    background-size:100%;
+}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
-<body>
+<body background="/background/index.png">
     <div th:if="${hasInfo}"><p th:text="${info}"></p></div>
-    <a href="/profile">Profile</a>
-    <a href="/logout">Log out</a>
-    <br>
-    <div th:if="${isAdministrator}">
-        <a href="/manage-user">Manage User</a>
-        <a href="/manage-target">Manage Target</a>
+    <div align="right">
+        <div th:if="${isAdministrator}">
+            <a href="/manage-user">Manage User</a> &nbsp; &nbsp;
+            <a href="/manage-target">Manage Target</a>
+        </div>
+        <a href="/profile">Profile</a> &nbsp; &nbsp;
+        <a href="/history-result">History</a> &nbsp; &nbsp;
+        <a href="/logout">Log out</a>
     </div>
+
     <br>
 
     <br>
-    <table border="2" cellspacing="0">
+    <table border="2" cellspacing="0" align="center" valign="center">
         <tr><th colspan="4">Scan Result Summary</th></tr>
         <tr>
             <th>Index</th>

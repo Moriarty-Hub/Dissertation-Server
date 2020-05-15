@@ -32,6 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/profile").hasAuthority(Role.NORMAL_USER.toString())
                 .antMatchers("/modify-avatar").hasAuthority(Role.NORMAL_USER.toString())
                 .antMatchers("/modify-password").hasAuthority(Role.NORMAL_USER.toString())
+                .antMatchers("/history-result").hasAuthority(Role.NORMAL_USER.toString())
                 .antMatchers("/manage-target").hasAuthority(Role.ADMINISTRATOR.toString())
                 .antMatchers("/edit-target").hasAuthority(Role.ADMINISTRATOR.toString())
                 .antMatchers("/edit-user").hasAuthority(Role.ADMINISTRATOR.toString())

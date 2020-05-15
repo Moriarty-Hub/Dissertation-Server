@@ -36,7 +36,7 @@ public class IndexController {
         model.addAttribute("hasInfo", false);
         model.addAttribute("info", null);
         model.addAttribute("targetList", targetService.getTargetList());
-        model.addAttribute("scanResultList", scanResultService.getScanResultList());
+        model.addAttribute("scanResultList", scanResultService.getLatestScanResult());
         return "index";
     }
 }

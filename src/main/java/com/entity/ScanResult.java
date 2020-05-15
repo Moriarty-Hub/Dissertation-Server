@@ -5,6 +5,7 @@ public class ScanResult {
     private String target;
     private TargetType targetType;
     private String description;
+    private String scanTime;
 
     public String getId() {
         return id;
@@ -36,5 +37,13 @@ public class ScanResult {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getScanTime() {
+        return scanTime;
+    }
+
+    public void setScanTime(String scanTime) {
+        this.scanTime = scanTime;
     }
 }

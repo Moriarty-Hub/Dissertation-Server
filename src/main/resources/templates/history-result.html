@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>History Result</title>
+</head>
+<body>
+    <div align="right"><a href="/index">Back</a></div>
+
+    <div th:each="scanResult, i : ${historyScanResultList}">
+        <table border="2" cellspacing="0">
+            <tr>
+                <th>Index</th>
+                <th>Target</th>
+                <th>Target type</th>
+                <th>Description</th>
+            </tr>
+            <tr th:each="record, j : ${scanResult}">
+                <td th:text="${j.count}"></td>
+                <td th:text="${record.getTarget()}"></td>
+                <td th:text="${record.getTargetType()}"></td>
+                <td th:text="${record.getDescription()}"></td>
+            </tr>
+        </table>
+        <br>
+    </div>
+</body>
+</html>
