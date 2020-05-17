@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Target Management</title>
 </head>
-<body>
-    <table border="2" cellspacing="0">
+<body background="/background/index.png">
+    <p align="right"><a href="/index">Back</a></p>
+    <h3 align="center">Target Management</h3><br>
+    <table border="2" cellspacing="0" align="center">
         <tr><th colspan="7">Hardware Asset</th></tr>
         <tr>
             <th>Index</th>
@@ -26,7 +36,7 @@
         </tr>
     </table>
     <br><br>
-    <table border="2" cellspacing="0">
+    <table border="2" cellspacing="0" align="center">
         <tr><th colspan="7">Website Asset</th></tr>
         <tr>
             <th>Index</th>
@@ -46,7 +56,7 @@
             <td><a th:href="'/delete-target?id='+${target.getId()}">Delete</a></td>
         </tr>
     </table>
-    <br><br>
-    <p><a href="/add-new-target">Add New Target</a></p>
+    <br>
+    <p align="center"><a href="/add-new-target">Add New Target</a></p>
 </body>
 </html>

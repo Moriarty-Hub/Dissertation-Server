@@ -31,6 +31,13 @@ public class ManageUserController {
         return "manage-user";
     }
 
+    @GetMapping("/add-new-user")
+    public String showAddNewUserPage(Model model) {
+        model.addAttribute("departmentList", departmentMapper.selectAllDepartmentName());
+        model.addAttribute("jobTitleList", jobTitleMapper.selectAllJobTitle());
+        return "add-new-user";
+    }
+
     @PostMapping("/add-new-user")
     public String addNewUser(@RequestParam String username, @RequestParam String email, @RequestParam String dateOfBirth, @RequestParam String department, @RequestParam String jobTitle, Model model) {
         manageUserService.insertNewUserAndSendAccountInfo(username, email, dateOfBirth, department, jobTitle);
@@ -53,6 +60,7 @@ public class ManageUserController {
         model.addAttribute("jobTitle", user.getJobTitle());
         model.addAttribute("departmentList", departmentMapper.selectAllDepartmentName());
         model.addAttribute("jobTitleList", jobTitleMapper.selectAllJobTitle());
+        model.addAttribute("isUsernameValid", true);
         return "edit-user";
     }
 

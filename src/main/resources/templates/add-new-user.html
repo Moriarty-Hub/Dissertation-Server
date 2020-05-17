@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Add New User</title>
 </head>
-<body>
-    <form action="/add-new-user" method="post">
-        <p>Username: <label><input type="text" name="username"></label></p>
-        <p>E-mail address: <label><input type="email" name="email"></label></p>
-        <p>Date of birth: <label><input type="date" name="dateOfBirth"></label></p>
-        <p>Department: <label><input type="text" name="department"></label></p>
-        <p>Job Title: <label><input type="text" name="jobTitle"></label></p>
-        <p><input type="submit" value="Submit"> &nbsp;&nbsp; <input type="reset" value="Reset"></p>
-    </form>
+<body background="/background/index.png">
+    <p align="right"><a href="/manage-user">Back</a></p>
+    <h3 align="center">Add New User</h3>
+    <center>
+        <form action="/add-new-user" method="post">
+            <p>Username: <label><input type="text" name="username"></label></p>
+            <p>E-mail address: <label><input type="email" name="email"></label></p>
+            <p>Date of birth: <label><input type="date" name="dateOfBirth"></label></p>
+            <p>Department: <select name="department">
+                                <option th:each="department : ${departmentList}" th:text="${department}" th:value="${department}"></option>
+                            </select></p>
+            <p>Job Title: <select name="jobTitle">
+                                <option th:each="jobTitle : ${jobTitleList}" th:text="${jobTitle}" th:value="${jobTitle}"></option>
+                            </select></p>
+            <p><input type="submit" value="Submit"> &nbsp;&nbsp; <input type="reset" value="Reset"></p>
+        </form>
+    </center>
 </body>
 </html>

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>History Result</title>
 </head>
-<body>
+<body background="/background/index.png">
     <div align="right"><a href="/index">Back</a></div>
-
-    <div th:each="scanResult, i : ${historyScanResultList}">
-        <table border="2" cellspacing="0">
+    <h3 align="center">History Result</h3>
+    <div th:each="scanResult, i : ${historyScanResultList}" align="center">
+        <h4 align="center" th:text="'Index: ' + ${i.count} + ' - ' + 'Scan time: ' + ${scanResult.get(0).getScanTime()}"></h4>
+        <table border="2" cellspacing="0" width="1000">
             <tr>
                 <th>Index</th>
                 <th>Target</th>

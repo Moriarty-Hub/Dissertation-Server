@@ -14,7 +14,7 @@ public interface ScanResultMapper {
     @Select("SELECT id, target, target_type as targetType, description, scan_time as scanTime FROM scan_result ORDER BY target_type")
     List<ScanResult> selectAllResults();
 
-    @Select("SELECT DISTINCT scan_time FROM scan_result GROUP BY scan_time ORDER BY scan_time")
+    @Select("SELECT DISTINCT scan_time FROM scan_result GROUP BY scan_time ORDER BY scan_time DESC")
     List<String> selectAllScanTime();
 
     @Select("SELECT id, target, target_type as targetType, description, scan_time as scanTime FROM scan_result WHERE scan_time = #{scanTime}")

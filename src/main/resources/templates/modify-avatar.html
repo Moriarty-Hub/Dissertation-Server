@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Modify Avatar</title>
 </head>
-<body>
+<body background="/background/index.png">
+    <p align="right"><a href="/profile">Back</a></p>
+    <h3 align="center">Modify Avatar</h3>
     <div th:if="${isError}"><p th:text="${info}"></p></div>
-    <form action="/modify-avatar" method="post" enctype="multipart/form-data">
-        Choose a picture: <input type="file" name="avatar" accept="image/jpeg">
-        <input type="submit" value="Upload"> &nbsp;&nbsp; <input type="reset" value="Reset">
-    </form>
+    <center>
+        <form action="/modify-avatar" method="post" enctype="multipart/form-data">
+            <p>Choose a picture: <input type="file" name="avatar" accept="image/jpeg"></p>
+            <input type="submit" value="Upload"> &nbsp;&nbsp; <input type="reset" value="Reset">
+        </form>
+    </center>
 </body>
 </html>

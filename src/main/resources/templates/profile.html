@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
 </head>
-<body>
-    Avatar <img th:src="@{${avatar}}" alt="Avatar" height="40" width="40"> <br>
-    <p th:text="'Username: ' + ${username}"></p>
-    <p th:text="'Date of Birth: ' + ${dateOfBirth}"></p>
-    <p th:text="'E-mail: ' + ${email}"></p>
-    <p th:text="'Department: ' + ${department}"></p>
-    <p th:text="'Job Title: ' + ${jobTitle}"></p>
-    <p><a href="/modify-avatar">Modify Avatar</a></p>
-    <p><a href="/modify-password">Modify password</a></p>
-    <p><a href="">Modify E-mail</a></p>
+<body background="/background/index.png">
+    <p align="right"><a href="/index">Back</a></p>
+    <center>
+        <img th:src="@{${avatar}}" alt="Avatar" height="60" width="60"> <br>
+        <p th:text="'Username: ' + ${username}"></p>
+        <p th:text="'Date of Birth: ' + ${dateOfBirth}"></p>
+        <p th:text="'E-mail: ' + ${email}"></p>
+        <p th:text="'Department: ' + ${department}"></p>
+        <p th:text="'Job Title: ' + ${jobTitle}"></p>
+        <p><a href="/modify-avatar">Modify Avatar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/modify-password">Modify password</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Modify E-mail</a></p>
+    </center>
 </body>
 </html>

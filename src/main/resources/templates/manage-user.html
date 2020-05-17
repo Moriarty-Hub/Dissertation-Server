@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<style type="text/css">
+    body{
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>User List Page</title>
 </head>
-<body>
-    <table border="2" cellspacing="0">
+<body background="/background/index.png">
+    <p align="right"><a href="/index">Back</a></p>
+    <h3 align="center">User Management</h3>
+    <table border="2" cellspacing="0" align="center">
         <tr><th colspan="8">User List</th></tr>
         <tr>
             <th>Index</th>
@@ -27,5 +37,7 @@
             <td><a th:href="'/delete-user?id='+${user.getId()}">Delete</a></td>
         </tr>
     </table>
+    <br>
+    <p align="center"><a href="/add-new-user">Add New User</a></p>
 </body>
 </html>
